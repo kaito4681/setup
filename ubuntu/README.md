@@ -41,19 +41,25 @@ sudo apt install openssh-server
 ## remote desktop
 
 ```sh
-sudo apt install xrdp
-sudo usermod -aG ssl-cert xrdp
-sudo apt install xfce4
+sudo apt install xrdp xorgxrdp gdm3
 ```
 
 ```sh
-echo "startxfce4" > ~/.xsession
+sudo sed -i 's/^#?WaylandEnable=.*/WaylandEnable=false/' /etc/gdm3/custom.conf
+sudo systemctl restart gdm3
 ```
 
 ```sh
-sudo vim /etc/gdm3/custom.conf
+sudo chown "$USER":"$USER" ~/.Xauthority 2>/dev/null || true
+sudo chmod 600 ~/.Xauthority 2>/dev/null || true
+sudo systemctl restart xrdp gdm3
 ```
-WaylandEnable=falseをコメントアウト
+
+```sh
+echo 'export DESKTOP_SESSION=ubuntu' > ~/.xsession
+echo 'export XDG_CURRENT_DESKTOP=GNOME' >> ~/.xsession
+echo 'exec dbus-run-session -- gnome-session --session=ubuntu' >> ~/.xsession
+```
 
 chrome desktopの場合
 ```sh
