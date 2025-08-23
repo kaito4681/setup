@@ -15,7 +15,7 @@ echo 'Acquire::https::Proxy "http://ufproxy.b.cii.u-fukui.ac.jp:8080";' | sudo t
 ## apt
 
 ```sh
-sudo apt install git curl
+sudo apt install git curl vim
 ```
 
 ## tailscale
@@ -38,5 +38,29 @@ sudo tailscale up
 sudo apt install openssh-server
 ```
 
-## remote desctop
+## remote desktop
+
+```sh
+sudo apt install xrdp
+sudo usermod -aG ssl-cert xrdp
+sudo apt install xfce4
+```
+
+```sh
+echo "startxfce4" > ~/.xsession
+```
+
+```sh
+sudo vim /etc/gdm3/custom.conf
+```
+WaylandEnable=falseをコメントアウト
+
+chrome desktopの場合
+```sh
+wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
+sudo dpkg --install chrome-remote-desktop_current_amd64.deb
+sudo apt install --assume-yes --fix-broken
+sudo groupadd chrome-remote-desktop
+sudo usermod -a -G chrome-remote-desktop $USER
+```
 
