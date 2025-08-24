@@ -70,3 +70,15 @@ sudo groupadd chrome-remote-desktop
 sudo usermod -a -G chrome-remote-desktop $USER
 ```
 
+## zsh
+```sh
+sudo apt install zsh
+chsh -s /use/bin/zsh
+```
+
+## brew
+[https://docs.brew.sh/Homebrew-on-Linux#:~:text=the%20Homebrew%20prefix.-,Requirements,-See%20Support%20Tiers](https://docs.brew.sh/Homebrew-on-Linux#:~:text=the%20Homebrew%20prefix.-,Requirements,-See%20Support%20Tiers)
+```
+sudo apt-get install build-essential procps curl file git
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
