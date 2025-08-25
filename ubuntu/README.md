@@ -40,15 +40,18 @@ sudo apt install openssh-server
 
 設定アプリ > system > remote desktop > remote login をオンにする  
 繋いでみて，Error code 0x207なら，exportしてrdpファイルを以下のように修正
+```diff
+- use redirection server name:i:0
++ use redirection server name:i:1
 ```
-use redirection server name:i:0」を「use redirection server name:i:1」にする。（末尾の 0 を 1へ変更）
-```
+（末尾の 0 を 1へ変更）
 
 ## zsh
 ```sh
 sudo apt install zsh
 chsh -s /use/bin/zsh
 ```
+反映しなければ再起動
 
 ## brew
 [https://docs.brew.sh/Homebrew-on-Linux#:~:text=the%20Homebrew%20prefix.-,Requirements,-See%20Support%20Tiers](https://docs.brew.sh/Homebrew-on-Linux#:~:text=the%20Homebrew%20prefix.-,Requirements,-See%20Support%20Tiers)
