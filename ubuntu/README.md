@@ -102,7 +102,9 @@ bun install -g @google/gemini-cli
 ## ufw
 
 ### tailscaleのみからしかアクセスできないように
+
 [https://tailscale.com/kb/1077/secure-server-ubuntu#step-5-restrict-all-other-traffic](https://tailscale.com/kb/1077/secure-server-ubuntu#step-5-restrict-all-other-traffic)
+
 ```sh
 sudo ufw enable
 sudo ufw default deny
@@ -114,8 +116,11 @@ sudo service ssh restart
 ```
 
 
-[https://tailscale.com/kb/1019/subnets#use-your-subnet-routes-from-other-devices}(https://tailscale.com/kb/1019/subnets#use-your-subnet-routes-from-other-devices)
+
 ###　tailscale subnet
+
+[https://tailscale.com/kb/1019/subnets#use-your-subnet-routes-from-other-devices](https://tailscale.com/kb/1019/subnets#use-your-subnet-routes-from-other-devices)
+
 ```sh
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
 echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
