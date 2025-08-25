@@ -38,34 +38,10 @@ sudo apt install openssh-server
 
 ## remote desktop
 
-```sh
-sudo apt install xrdp xorgxrdp gdm3
+設定アプリ > system > remote desktop > remote login をオンにする
+繋いでみて，Error code 0x207なら，exportしてrdpファイルを以下のように修正
 ```
-
-```sh
-sudo sed -i 's/^#?WaylandEnable=.*/WaylandEnable=false/' /etc/gdm3/custom.conf
-sudo systemctl restart gdm3
-```
-
-```sh
-sudo chown "$USER":"$USER" ~/.Xauthority 2>/dev/null || true
-sudo chmod 600 ~/.Xauthority 2>/dev/null || true
-sudo systemctl restart xrdp gdm3
-```
-
-```sh
-echo 'export DESKTOP_SESSION=ubuntu' > ~/.xsession
-echo 'export XDG_CURRENT_DESKTOP=GNOME' >> ~/.xsession
-echo 'exec dbus-run-session -- gnome-session --session=ubuntu' >> ~/.xsession
-```
-
-chrome desktopの場合
-```sh
-wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
-sudo dpkg --install chrome-remote-desktop_current_amd64.deb
-sudo apt install --assume-yes --fix-broken
-sudo groupadd chrome-remote-desktop
-sudo usermod -a -G chrome-remote-desktop $USER
+use redirection server name:i:0」を「use redirection server name:i:1」にする。（末尾の 0 を 1へ変更）
 ```
 
 ## zsh
@@ -119,3 +95,33 @@ curl -fsSL https://bun.sh/install | bash
 ```sh
 bun install -g @google/gemini-cli
 ```
+
+## ufw
+
+### tailscaleのみからしかアクセスできないように
+[https://tailscale.com/kb/1077/secure-server-ubuntu#step-5-restrict-all-other-traffic](https://tailscale.com/kb/1077/secure-server-ubuntu#step-5-restrict-all-other-traffic)
+```sh
+sudo ufw enable
+sudo ufw default deny
+sudo ufw reload
+sudo ufw allow in on tailscale0
+
+sudo ufw reload
+sudo service ssh restart
+```
+
+
+[https://tailscale.com/kb/1019/subnets#use-your-subnet-routes-from-other-devices}(https://tailscale.com/kb/1019/subnets#use-your-subnet-routes-from-other-devices)
+###　tailscale subnet
+```sh
+echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
+sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
+
+# 例：sudo tailscale set --advertise-routes=10.0.87.0/24;
+sudo tailscale set --advertise-routes="subnet routesをここに入れる";
+sudo tailscale set --accept-routes
+```
+
+
+
