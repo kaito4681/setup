@@ -82,3 +82,42 @@ chsh -s /use/bin/zsh
 sudo apt-get install build-essential procps curl file git
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+
+## mise
+[https://mise.jdx.dev/getting-started.html](https://mise.jdx.dev/getting-started.html)
+```sh
+sudo apt update -y && sudo apt install -y gpg sudo wget curl
+sudo install -dm 755 /etc/apt/keyrings
+wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1> /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
+sudo apt update
+sudo apt install -y mise
+```
+
+```sh
+mise use --global python@3.13
+mise use --global node@22
+```
+
+
+## uv
+[https://docs.astral.sh/uv/#highlights](https://docs.astral.sh/uv/#highlights)
+
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+```sh
+uv tool install ruff ty
+```
+
+## bun
+[https://bun.com/get](https://bun.com/get)
+
+```sh
+curl -fsSL https://bun.sh/install | bash
+```
+
+```sh
+bun install -g @google/gemini-cli
+```
