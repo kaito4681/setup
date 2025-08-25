@@ -117,7 +117,7 @@ sudo service ssh restart
 
 
 
-###　tailscale subnet
+### tailscale subnet
 
 [https://tailscale.com/kb/1019/subnets#use-your-subnet-routes-from-other-devices](https://tailscale.com/kb/1019/subnets#use-your-subnet-routes-from-other-devices)
 
