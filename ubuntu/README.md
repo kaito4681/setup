@@ -131,5 +131,9 @@ sudo tailscale set --advertise-routes="subnet routesをここに入れる";
 sudo tailscale set --accept-routes
 ```
 
+## wandb
+```sh
+uvx wandb login
+```
 
 
