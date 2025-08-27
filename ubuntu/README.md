@@ -53,6 +53,12 @@ chsh -s /use/bin/zsh
 ```
 反映しなければ再起動
 
+```sh
+echo 'export http_proxy="http://ufproxy.b.cii.u-fukui.ac.jp:8080"' >> ~/.zshrc
+echo 'export no_proxy="localhost,127.0.0.1"' >> ~/.zshrc
+source ~/.zshrc
+```
+
 ## brew
 [https://docs.brew.sh/Homebrew-on-Linux#:~:text=the%20Homebrew%20prefix.-,Requirements,-See%20Support%20Tiers](https://docs.brew.sh/Homebrew-on-Linux#:~:text=the%20Homebrew%20prefix.-,Requirements,-See%20Support%20Tiers)
 ```
