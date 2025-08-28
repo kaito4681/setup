@@ -82,6 +82,11 @@ mise use --global python@3.13
 mise use --global node@22
 ```
 
+### .python-version や　.nvmrc などを使用する場合は以下のコマンドを実行
+```sh
+mise settings add idiomatic_version_file_enable_tools python
+```
+
 
 ## uv
 [https://docs.astral.sh/uv/#highlights](https://docs.astral.sh/uv/#highlights)
